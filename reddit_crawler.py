@@ -4,6 +4,10 @@ import config
 
 class SubReddit_crawler:
 
+	def __init__(self, subreddit_name):
+
+		self.subreddit_name = subreddit_name
+		self.set_header()
 
 	def set_header(self):
 
@@ -25,13 +29,6 @@ class SubReddit_crawler:
 
 		self.headers['Authorization'] = f'bearer {Acces_Token}'
 
-	def __init__(self, subreddit_name):
-
-		self.subreddit_name = subreddit_name
-		self.set_header()
-
-
-
 
 	#Gets new posts, if use Last_post_ID to avoid getting redunant data when crawling 
 
@@ -44,18 +41,20 @@ class SubReddit_crawler:
 		else:
 			params = {}
 
-		new_posts = requests.get('https://oauth.reddit.com/r/{}/new'.format(self.subreddit_name), headers= self.headers,
-                               params= params)
+		new_posts = requests.get('https://oauth.reddit.com/r/{}/new'.format(self.subreddit_name), headers= self.headers, 
+			params= params)
 
-      #  if res_new.status_code != 200:
-      #      self.reset_header()
-      #      self.check_new_data(id)
+		if new_posts.status_code !=200:
+			self.set_header()
+			self.get_new_posts()
+
+
 		return new_posts
 
 
-reddit_crawler = SubReddit_crawler('CryptoCurrency')
+reddit_crawler = SubReddit_crawler('Bitcoin')
 
-print(reddit_crawler.get_new_posts().json())
+print(reddit_crawler.get_new_posts())
 
 
 
