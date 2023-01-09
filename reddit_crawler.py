@@ -1,22 +1,23 @@
 
 import requests
-
+import config
 
 class SubReddit_crawler:
 
 
 	def set_header(self):
 
-		CLIENT_ID = '-UwFL3ODpmMLGhcq509XFA'
-		SECRET_KEY = 'rwhzEOPD9kqbgxj34JxuS7vcMrMlWg'
+		CLIENT_ID = config.CLIENT_ID
+		SECRET_KEY = config.SECRET_KEY
 
 		auth = requests.auth.HTTPBasicAuth(CLIENT_ID, SECRET_KEY)
 
-		self.headers = {'User-Agent': 'cryptocurrency 1.0 by /u/mahsageshvadi'}
+		self.headers = config.initial_header
+
 		data = {
 	            'grant_type': 'password',
-	            'username': 'mahsageshvadi',
-	            'password': 'Mimoolijoon1'
+	            'username': config.username,
+	            'password': config.password
 	        }
 		res = requests.post('https://www.reddit.com/api/v1/access_token', auth=auth, data=data, headers=self.headers)
 		TOKEN = res.json()
