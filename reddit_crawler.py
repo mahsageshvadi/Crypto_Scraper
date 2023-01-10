@@ -49,13 +49,18 @@ class SubReddit_crawler:
 			self.get_new_posts()
 
 
-		return new_posts
+		return new_posts.json()
+
+	def get_post_comments(self, post_link):
+
+		comments =  requests.get('https://oauth.reddit.com' + post_link, headers=self.headers)
+
+		return comments.json()[1]['data']['children']
 
 
-reddit_crawler = SubReddit_crawler('Bitcoin')
+reddit_crawler = SubReddit_crawler('CryptoCurrency')
 
-print(reddit_crawler.get_new_posts())
-
+print(reddit_crawler.get_post_comments('/r/NFT/comments/107w087/alien_embryos_on_opensea_73_eth_volume_traded_232/'))
 
 
 
