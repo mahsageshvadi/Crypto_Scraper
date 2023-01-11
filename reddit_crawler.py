@@ -51,6 +51,13 @@ class SubReddit_crawler:
 
 		return new_posts.json()
 
+	def get_users_data(self, username):
+
+		user_data = requests.get("https://oauth.reddit.com/user/{}/about.json".format(username), headers=self.headers)
+
+		return user_data.json()
+
+
 	def get_post_comments(self, post_link):
 
 		comments =  requests.get('https://oauth.reddit.com' + post_link, headers=self.headers)
@@ -60,9 +67,7 @@ class SubReddit_crawler:
 
 reddit_crawler = SubReddit_crawler('CryptoCurrency')
 
-print(reddit_crawler.get_post_comments('/r/NFT/comments/107w087/alien_embryos_on_opensea_73_eth_volume_traded_232/'))
-
-
+print(reddit_crawler.get_users_data('AutoModerator'))
 
 
 
