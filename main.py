@@ -1,9 +1,10 @@
-import reddit_crawler
+from data_update_handler import DataUpdateHandler
 
 
 
 
 if __name__ == "__main__":
 
+	# create update_controller class
 
-	reddit_crawler = reddit_crawler.SubReddit_crawler('CryptoCurrency')
+	DataUpdateHandler()

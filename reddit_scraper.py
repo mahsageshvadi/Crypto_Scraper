@@ -2,13 +2,14 @@
 import requests
 import config
 
-class SubReddit_crawler:
+class SubRedditScraper:
 
 	def __init__(self, subreddit_name):
 
 		self.subreddit_name = subreddit_name
 		self.set_header()
 
+	# sets headers for request, this is based on reddit API documentation
 	def set_header(self):
 
 		CLIENT_ID = config.CLIENT_ID
@@ -30,7 +31,7 @@ class SubReddit_crawler:
 		self.headers['Authorization'] = f'bearer {Acces_Token}'
 
 
-	#Gets new posts, if use Last_post_ID to avoid getting redunant data when crawling 
+	#Gets new posts, if use Last_post_ID to avoid getting redunant data when scraping 
 
 	def get_new_posts(self, Last_post_ID = None):
 
@@ -64,10 +65,6 @@ class SubReddit_crawler:
 
 		return comments.json()[1]['data']['children']
 
-
-reddit_crawler = SubReddit_crawler('CryptoCurrency')
-
-print(reddit_crawler.get_users_data('AutoModerator'))
 
 
 
