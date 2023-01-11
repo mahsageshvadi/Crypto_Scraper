@@ -3,11 +3,11 @@ from reddit_scraper import SubRedditScraper
 class DataUpdateHandler:
 
 
-	def __init__(self):
+	def __init__(self, subredditName):
 
-		# create a reddit crawler class 
+		# create a reddit scraper class 
 
-		reddit_scraper = SubRedditScraper('CryptoCurrency')
+		reddit_scraper = SubRedditScraper(subredditName)
 
 		self.reddit_scraper = reddit_scraper
 
@@ -16,7 +16,7 @@ class DataUpdateHandler:
 
 
 
-	def start():
+	#def start():
 
 		
 		
