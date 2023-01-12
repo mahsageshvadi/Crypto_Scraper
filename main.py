@@ -15,4 +15,5 @@ if __name__ == "__main__":
 
 	# create update_controller class
 
-	DataUpdateHandler(args.subredditName)
+	data_update_handler = DataUpdateHandler(args.subredditName)
+	data_update_handler.start()

@@ -50,7 +50,7 @@ class SubRedditScraper:
 			self.get_new_posts()
 
 
-		return new_posts.json()
+		return new_posts.json()['data']['children']
 
 	def get_users_data(self, username):
 
