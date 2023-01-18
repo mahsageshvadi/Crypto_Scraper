@@ -107,6 +107,7 @@ def get_dictionary_from_comment_json(comment_data_list, post_id, parent_id, comm
 def get_dictionary_from_user_json(user_data):
 
 	user_dictionary = {}
+	user_dictionary_other = {}
 
 	ts = int(user_data['created_utc'])
 	time_date = datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
@@ -136,58 +137,58 @@ def get_dictionary_from_user_json(user_data):
 
 	user_dictionary['has_verified_email'] = user_data['has_verified_email']
 
-	user_dictionary['restrict_commenting'] = user_data['subreddit']['restrict_commenting']
+	user_dictionary_other['restrict_commenting'] = user_data['subreddit']['restrict_commenting']
 
-	user_dictionary['subscribers'] = user_data['subreddit']['subscribers']
+	user_dictionary_other['subscribers'] = user_data['subreddit']['subscribers']
 
-	user_dictionary['is_default_banner'] = user_data['subreddit']['is_default_banner']
+	user_dictionary_other['is_default_banner'] = user_data['subreddit']['is_default_banner']
 
-	user_dictionary['quarantine'] = user_data['subreddit']['quarantine']
+	user_dictionary_other['quarantine'] = user_data['subreddit']['quarantine']
 
-	user_dictionary['user_is_moderator'] = user_data['subreddit']['user_is_moderator']
+	user_dictionary_other['user_is_moderator'] = user_data['subreddit']['user_is_moderator']
 
-	user_dictionary['accept_followers'] = user_data['subreddit']['accept_followers']
+	user_dictionary_other['accept_followers'] = user_data['subreddit']['accept_followers']
 
-	user_dictionary['link_flair_enabled'] = user_data['subreddit']['link_flair_enabled']
+	user_dictionary_other['link_flair_enabled'] = user_data['subreddit']['link_flair_enabled']
 
-	user_dictionary['disable_contributor_requests'] = user_data['subreddit']['disable_contributor_requests']
+	user_dictionary_other['disable_contributor_requests'] = user_data['subreddit']['disable_contributor_requests']
 
-	user_dictionary['user_is_subscriber'] = user_data['subreddit']['user_is_subscriber']
+	user_dictionary_other['user_is_subscriber'] = user_data['subreddit']['user_is_subscriber']
 
-	user_dictionary['is_mod'] = user_data['is_mod']
+	user_dictionary_other['is_mod'] = user_data['is_mod']
 
-	user_dictionary['hide_from_robots'] = user_data['hide_from_robots']
+	user_dictionary_other['hide_from_robots'] = user_data['hide_from_robots']
 
-	user_dictionary['pref_show_snoovatar'] = user_data['pref_show_snoovatar']
+	user_dictionary_other['pref_show_snoovatar'] = user_data['pref_show_snoovatar']
 
-	user_dictionary['is_blocked'] = user_data['is_blocked']
+	user_dictionary_other['is_blocked'] = user_data['is_blocked']
 
-	user_dictionary['accept_chats'] = user_data['accept_chats']
+	user_dictionary_other['accept_chats'] = user_data['accept_chats']
 
-	user_dictionary['snoovatar_img'] = user_data['snoovatar_img']
+	user_dictionary_other['snoovatar_img'] = user_data['snoovatar_img']
 
-	user_dictionary['has_subscribed'] = user_data['has_subscribed']
+	user_dictionary_other['has_subscribed'] = user_data['has_subscribed']
 
-	user_dictionary['accept_pms'] = user_data['accept_pms']
+	user_dictionary_other['accept_pms'] = user_data['accept_pms']
 
-	user_dictionary['default_set'] = user_data['subreddit']['default_set']
+	user_dictionary_other['default_set'] = user_data['subreddit']['default_set']
 
-	user_dictionary['user_is_contributor'] = user_data['subreddit']['user_is_contributor']
+	user_dictionary_other['user_is_contributor'] = user_data['subreddit']['user_is_contributor']
 
-	user_dictionary['restrict_posting'] = user_data['subreddit']['restrict_posting']
+	user_dictionary_other['restrict_posting'] = user_data['subreddit']['restrict_posting']
 
-	user_dictionary['user_is_banned'] = user_data['subreddit']['user_is_banned']
+	user_dictionary_other['user_is_banned'] = user_data['subreddit']['user_is_banned']
 
-	user_dictionary['free_form_reports'] = user_data['subreddit']['free_form_reports']
+	user_dictionary_other['free_form_reports'] = user_data['subreddit']['free_form_reports']
 
-	user_dictionary['show_media'] = user_data['subreddit']['show_media']
+	user_dictionary_other['show_media'] = user_data['subreddit']['show_media']
 
-	user_dictionary['user_is_muted'] = user_data['subreddit']['user_is_muted']
+	user_dictionary_other['user_is_muted'] = user_data['subreddit']['user_is_muted']
 
-	user_dictionary['over_18'] = user_data['subreddit']['over_18']
+	user_dictionary_other['over_18'] = user_data['subreddit']['over_18']
 
-	user_dictionary['raw_json'] = user_data
+	user_dictionary_other['raw_json'] = user_data
 
-	return user_dictionary
+	return user_dictionary, user_dictionary_other
 
 			
