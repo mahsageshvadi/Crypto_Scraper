@@ -33,7 +33,7 @@ class SubRedditScraper:
 
 	#Gets new posts, if use Last_post_ID to avoid getting redunant data when scraping 
 
-	def get_new_posts(self, Last_post_ID = None):
+	def get_new_posts(self, Last_post_ID=None):
 
 		if Last_post_ID is not None:
 
@@ -50,7 +50,7 @@ class SubRedditScraper:
 			self.get_new_posts()
 
 
-		return new_posts.json()['data']['children']
+		return new_posts
 
 	def get_users_data(self, username):
 

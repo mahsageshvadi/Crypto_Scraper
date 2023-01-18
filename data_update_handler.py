@@ -17,8 +17,6 @@ class DataUpdateHandler:
 
 		self.DB = DB()
 
-		self.lastPostId = 0
-
 
 	def update_user(self, username):
 
@@ -35,10 +33,30 @@ class DataUpdateHandler:
 
         # todo: if 'is_suspended' in users_json.keys():
 
-	def update_posts(self):
+    def get_last_valid_post_id(self, limit= 2):
 
-		new_posts = self.reddit_scraper.get_new_posts()
+        before_last_id = self.DB.get_last_post_id(limit)
+        if before_last_id is not None:
+            before_last_id = before_last_id[limit-1][0]
 
+            if self.reddit_scraper.get_new_posts(before_last_id).json()['data']['children']:
+                return before_last_id
+            else:
+                before_last_id = get_last_valid_post_id(limit+1)
+                return before_last_id
+
+	def update_posts(self, last_post_id):
+
+		new_posts = self.reddit_scraper.get_new_posts(last_post_id)
+
+		# we should check if new-posts exists maybe the post related to last_post_id has been deleted
+
+		if not new_posts.json()['data']['children']:
+
+			last_post_id_candidate = self.get_last_valid_post_id()
+            if last_post_id_candidate is not None:
+                last_post_id = last_post_id_candidate
+                new_posts = self.reddit_scraper.get_new_posts(last_post_id)
 
 		for post in new_posts:
 			post_dict =  get_dictionary_from_post_json(post)
@@ -58,9 +76,23 @@ class DataUpdateHandler:
 		for username in user_list:
 			self.update_user(username)
 
-	def start(self):
+	def start_post_update(firsttime):
 
-		
+		if !firsttime:
+			last_post_id = self.DB.get_last_post_id()
+			if last_post_id is not None:
+	            last_post_id = last_post_id[0][0]
+	            if last_post_id is not None:	
+	            	update_posts(last_post_id)
+
+	    else:
+	    	self.updata_posts(None)
+
+
+
+	def start(self, firsttime):
+
+		start_post_update(firsttime)
 		#self.update_posts()
 		#self.update_comments('/r/CryptoCurrency/comments/10fdcki/whats_the_direction_is_this_recovery_or_a_bull/', 1)
 		

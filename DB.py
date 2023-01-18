@@ -29,10 +29,27 @@ class DB:
 		insert_query = insert_query_split[0] + ') values (' 
 		insert_query = insert_query + insert_query_split[1].removesuffix(',') + ')'
 
-		print("#############################################################")
-		print(insert_query)
 
 		return insert_query 
+
+
+	def get_last_post_id(self, limit=1):
+
+		 sql =  """SELECT id  FROM posts 
+                    ORDER BY date_and_time DESC
+                    LIMIT
+                    """ + str(limit)
+
+        try:
+            self.cursorObject.execute(sql)
+            last_id = self.cursorObject.fetchall()
+
+            return last_id
+        except:
+            return None
+
+
+
 
 
 
