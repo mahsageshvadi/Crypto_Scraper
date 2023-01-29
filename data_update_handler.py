@@ -58,8 +58,10 @@ class DataUpdateHandler:
                 last_post_id = last_post_id_candidate
                 new_posts = self.reddit_scraper.get_new_posts(last_post_id)
 
-		for post in new_posts:
-			post_dict =  get_dictionary_from_post_json(post)
+				for post in new_posts:
+					post_dict =  get_dictionary_from_post_json(post)
+
+					################Start DB
 
 			#self.update_comments(post_dict['link'], 1)
 
@@ -88,11 +90,4 @@ class DataUpdateHandler:
 	    else:
 	    	self.updata_posts(None)
 
-
-
-	def start(self, firsttime):
-
-		start_post_update(firsttime)
-		#self.update_posts()
-		#self.update_comments('/r/CryptoCurrency/comments/10fdcki/whats_the_direction_is_this_recovery_or_a_bull/', 1)
 		
