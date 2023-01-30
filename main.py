@@ -15,6 +15,5 @@ if __name__ == "__main__":
 	args = parser.parse_args()
 
 	# create update_controller class
-
 	data_update_handler = DataUpdateHandler(args.subredditName)
 	data_update_handler.start_post_update(args.firsttime)

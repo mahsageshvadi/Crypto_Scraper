@@ -9,6 +9,7 @@ class SubRedditScraper:
 		self.subreddit_name = subreddit_name
 		self.set_header()
 
+
 	# sets headers for request, this is based on reddit API documentation
 	def set_header(self):
 

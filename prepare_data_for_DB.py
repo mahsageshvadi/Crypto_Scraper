@@ -32,7 +32,7 @@ def get_dictionary_from_post_json(post_data):
 
 		post_dictionary['score'] = post_data['score']
 
-		post_dictionary['CommentsNumber'] = post_data['num_comments']
+		post_dictionary['commentsNumber'] = post_data['num_comments']
 
 		post_dictionary['upVoteRatio'] = post_data['upvote_ratio']
 
