@@ -79,7 +79,7 @@ class DB:
 			insert_query = self.insert_query_with_dict(post_dict, 'posts')
 
 			self.mycursor.execute(insert_query)
-			db.commit()
+			DB.commit()
 
 
 
