@@ -13,10 +13,10 @@ class DB:
 
 		self.DB =  mysql.connector.connect(
 
-		        host= self.DB_config.host,
-		        user= self.DB_config.user,
-		        passwd= self.DB_config.passwd,
-		        database= self.DB_config.database
+		        host= self.DB_config['host'],
+		        user= self.DB_config['user'],
+		        passwd= self.DB_config['passwd'],
+		        database= self.DB_config['database']
 
 
         	)
