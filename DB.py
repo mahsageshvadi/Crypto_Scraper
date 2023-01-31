@@ -1,4 +1,5 @@
 import config 
+import mysql.connector
 
 
 
@@ -8,6 +9,21 @@ class DB:
 
 		self.tables_name = config.tables_name
 		self.data_types_in_posts_table_not_need_qotation = config.data_types_in_posts_table_not_need_qotation
+		self.DB_config = config.DB_config
+
+		self.DB =  mysql.connector.connect(
+
+		        host= self.DB_config.host,
+		        user= self.DB_config.user,
+		        passwd= self.DB_config.passwd,
+		        database= self.DB_config.database
+
+
+        	)
+		self.mycursor = self.DB.cursor()
+
+
+
 
 	def insert_query_with_dict(self, insert_dict, table_name):
 
@@ -54,6 +70,17 @@ class DB:
 			return last_id
 		except:
 			return None
+
+	def insert_posts_to_db(self, posts):
+
+		for post in posts.json()['data']['children']:
+			post_dict =  get_dictionary_from_post_json(post)
+			insert_query = self.insert_query_with_dict(post_dict, 'posts')
+
+			self.mycursor.execute(insert_query)
+			db.commit()
+
+
 
 
 

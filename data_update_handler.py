@@ -60,13 +60,8 @@ class DataUpdateHandler:
 					last_post_id = last_post_id_candidate
 					new_posts = self.reddit_scraper.get_new_posts(last_post_id)
 
-		for post in new_posts.json()['data']['children']:
-			post_dict =  get_dictionary_from_post_json(post)
-			insert_query = self.DB.insert_query_with_dict(post_dict, 'posts')
-			print('###########################################')
-			print(insert_query)
 
-					################Start DB
+		self.DB.insert_posts_to_db(new_posts)
 
 			#self.update_comments(post_dict['link'], 1)
 
