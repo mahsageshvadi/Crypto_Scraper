@@ -1,6 +1,7 @@
 import config 
 import mysql.connector
 
+from prepare_data_for_DB import get_dictionary_from_post_json,
 
 
 class DB:
