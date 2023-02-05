@@ -53,6 +53,7 @@ class DB:
 					print("222222222222222222222222222222222222")
 				print('value after:')
 				print(value)
+				print(type(value))
 				print('\n\n')
 
 				insert_query = insert_query_split[0] + '`{}`, '.format(key) + ') values' + insert_query_split[1] + '"{}" '.format(value) + ','
