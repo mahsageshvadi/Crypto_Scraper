@@ -40,9 +40,9 @@ class DB:
 			if key in self.data_types_in_posts_table_not_need_qotation:
 				insert_query = insert_query_split[0] + '`{}`, '.format(key) + ') values' + insert_query_split[1] + '{} '.format(value) + ','
 			else:
-				print('key:\n\n\n')
+				print('key:\n')
 				print(key)
-				print('value:\n\n\n')
+				print('value:\n')
 				print(value)
 				print('value:\n\n\n')
 
@@ -52,7 +52,7 @@ class DB:
 				if "\"" in value:
 					value = value.replace("\"", "")
 					print("222222222222222222222222222222222222")
-				print('value after:\n\n\n')
+				print('value after:\n')
 				print(value)
 
 				insert_query = insert_query_split[0] + '`{}`, '.format(key) + ') values' + insert_query_split[1] + '"{}" '.format(value) + ','
