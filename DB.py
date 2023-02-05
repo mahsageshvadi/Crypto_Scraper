@@ -44,7 +44,7 @@ class DB:
 					value = value.replace("'", "''")
 					print('111111111111111111111111111111111111')
 				if "\"" in value:
-					value = value.replace('"', '\"')
+					value = value.replace("\"", "\\\"")
 					print("222222222222222222222222222222222222")
 					print(value)
 				print('33333333333333333333333333333333')
