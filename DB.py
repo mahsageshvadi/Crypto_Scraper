@@ -42,6 +42,8 @@ class DB:
 			else:
 				if "'" in value:
 					value = value.replace("'", "''")
+				if '"' in value:
+					value = value.replace('"', '\"')
 
 				insert_query = insert_query_split[0] + '`{}`, '.format(key) + ') values' + insert_query_split[1] + '"{}" '.format(value) + ','
 
