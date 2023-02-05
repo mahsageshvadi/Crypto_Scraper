@@ -44,6 +44,7 @@ class DB:
 				print(key)
 				print('value:\n\n\n')
 				print(value)
+				print('value:\n\n\n')
 
 				if "'" in value:
 					value = value.replace("'", "")
@@ -55,6 +56,9 @@ class DB:
 				print(value)
 
 				insert_query = insert_query_split[0] + '`{}`, '.format(key) + ') values' + insert_query_split[1] + '"{}" '.format(value) + ','
+
+		print("***********************************************************************************")
+		print(insert_query)
 
 
 
@@ -88,8 +92,7 @@ class DB:
 		for post in posts.json()['data']['children']:
 			post_dict =  get_dictionary_from_post_json(post)
 			insert_query = self.insert_query_with_dict(post_dict, 'posts')
-			print("***********************************************************************************")
-			print(insert_query)
+
 			self.mycursor.execute(insert_query)
 			self.DB.commit()
 
