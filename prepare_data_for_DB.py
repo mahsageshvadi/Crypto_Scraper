@@ -11,7 +11,7 @@ def get_dictionary_from_post_json(post_data):
 
 		post_text = post_data['selftext']
 		post_text = post_text.replace('\n', '')
-		post_dictionary['text'] = post_text.replace('\\', '')
+		post_dictionary['post_text'] = post_text.replace('\\', '')
 
 		post_title = post_data['title']
 		post_dictionary['title'] = post_title.replace('\\', '')
