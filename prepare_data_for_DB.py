@@ -39,7 +39,7 @@ def get_dictionary_from_post_json(post_data):
 		ts = int(post_data['created_utc'])
 		post_dictionary['timePosted'] = datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
-		post_dictionary['media'] = post_data['secure_media_embed']
+		post_dictionary['media'] = str(post_data['secure_media_embed'])
 
 		post_dictionary['pinned'] = post_data['pinned']
 
