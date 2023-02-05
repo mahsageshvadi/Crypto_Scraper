@@ -43,7 +43,7 @@ class DB:
 				if "'" in value:
 					value = value.replace("'", "''")
 					print('111111111111111111111111111111111111')
-				if '"' in value:
+				if "\"" in value:
 					value = value.replace('"', '\"')
 					print("222222222222222222222222222222222222")
 					print(value)
