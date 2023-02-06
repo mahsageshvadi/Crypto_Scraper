@@ -2,7 +2,7 @@ import json
 
 from reddit_scraper import SubRedditScraper
 from DB import DB
-from prepare_data_for_DB import get_dictionary_from_post_json, get_dictionary_from_comment_json, get_dictionary_from_user_json
+from prepare_data_for_DB import  get_dictionary_from_comment_json, get_dictionary_from_user_json
 
 
 class DataUpdateHandler:

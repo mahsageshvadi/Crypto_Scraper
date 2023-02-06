@@ -40,32 +40,17 @@ class DB:
 			if key in self.data_types_in_posts_table_not_need_qotation:
 				insert_query = insert_query_split[0] + '`{}`, '.format(key) + ') values' + insert_query_split[1] + '{} '.format(value) + ','
 			else:
-				print('key:')
-				print(key)
-				print('value:')
-				print(value)
+
 
 				if "'" in value:
 					value = value.replace("'", "")
-					print('111111111111111111111111111111111111')
+
 				if "\"" in value:
 					value = value.replace("\"", "")
-					print("222222222222222222222222222222222222")
-				print('value after:')
-				print(value)
-				print(type(value))
-				print('\n\n')
+
 
 				insert_query = insert_query_split[0] + '`{}`, '.format(key) + ') values' + insert_query_split[1] + '"{}" '.format(value) + ','
 
-		print("***********************************************************************************")
-		print(insert_query)
-		print("***********************************************************************************")
-
-
-
-
-		
 
 		insert_query_split = insert_query.split(', ) values (')
 		insert_query = insert_query_split[0] + ') values (' 
@@ -89,6 +74,7 @@ class DB:
 			return last_id
 		except:
 			return None
+		print(last_id)
 
 	def insert_posts_to_db(self, posts):
 
